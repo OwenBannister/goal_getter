@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyString
+  completion_date: 2013-12-12 14:48:04
+  start_date: 2013-12-12 14:48:04
+  money_available: 1.5
+
+two:
+  name: MyString
+  description: MyString
+  completion_date: 2013-12-12 14:48:04
+  start_date: 2013-12-12 14:48:04
+  money_available: 1.5

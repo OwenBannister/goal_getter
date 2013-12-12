@@ -1,0 +1,17 @@
+defaults: &defaults
+  adapter: postgresql
+  encoding: unicode
+  username: owenb
+  password: Multi264
+
+development:
+  <<: *defaults
+  database: goal_getter
+
+test:
+  <<: *defaults
+  database: goal_getter_test
+
+production:
+  <<: *defaults
+  database: goal_getter_prod
