@@ -1,0 +1,6 @@
+  <h2>Tasks</h2>
+  <% @tasks.each do |t|%>
+  <div class="well">
+  <p><strong><%="Name: #{t.name} "%></strong><span><%= "Description: #{t.description}"%></span></p>
+</div>
+  <% end %>

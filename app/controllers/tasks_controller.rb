@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-
+  respond_to :js, :html
   # GET /tasks
   def index
     @tasks = Task.all
@@ -13,6 +13,7 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = Task.new
+    @goal = Goal.find(params[:goal_id])
     respond_to do |format|               
       format.js
     end        
@@ -25,12 +26,13 @@ class TasksController < ApplicationController
   # POST /tasks
   def create
     @task = Task.new(task_params)
-    puts @task
-    if @task.save
-      redirect_to @task, notice: 'Task was successfully created.'
-    else
-      render action: 'new'
+    @task.save!
+     @goal = Goal.find_by_id @task.goal_id
+    @tasks = @goal.tasks
+ respond_to do |format|
+    format.js do
     end
+  end
   end
 
   # PATCH/PUT /tasks/1

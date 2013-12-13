@@ -8,6 +8,7 @@ class GoalsController < ApplicationController
 
   # GET /goals/1
   def show
+    @tasks = @goal.tasks
   end
 
   # GET /goals/new
