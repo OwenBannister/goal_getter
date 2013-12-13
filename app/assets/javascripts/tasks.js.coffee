@@ -6,3 +6,4 @@ $(document).ready ->
     $("#new_task").append xhr.responseText
     ).bind "ajax:error", (e, xhr, status, error) ->
     $("#new_task").append "<p>ERROR</p>"
+
