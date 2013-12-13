@@ -8,6 +8,7 @@
       <th>Completion date</th>
       <th>Start date</th>
       <th>Money available</th>
+       <th>Goal ID</th>
       <th></th>
       <th></th>
       <th></th>
@@ -22,6 +23,8 @@
         <td><%= task.completion_date %></td>
         <td><%= task.start_date %></td>
         <td><%= task.money_available %></td>
+        <td><%= task.goal_id %></td>
+
         <td><%= link_to 'Show', task %></td>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
         <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,5 +1,6 @@
+<div class="hero-unit">
 <h1>Listing goals</h1>
-
+</div>
 <table>
   <thead>
     <tr>
@@ -17,7 +18,6 @@
       <tr>
         <td><%= goal.name %></td>
         <td><%= goal.description %></td>
-        <td><%= goal.task_id %></td>
         <td><%= link_to 'Show', goal %></td>
         <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
         <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>

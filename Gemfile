@@ -22,9 +22,9 @@ gem "bootstrap-sass", '~> 3.0.0'
 
   gem 'uglifier', '>= 1.0.3'
 end
-
+gem "less-rails"
 gem 'coffee-rails', '~> 4.0.1'
-
+gem 'twitter-bootstrap-rails'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

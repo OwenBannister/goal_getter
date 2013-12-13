@@ -10,10 +10,9 @@
   <%= @goal.description %>
 </p>
 
-<p>
-  <strong>Task:</strong>
-  <%= @goal.task_id %>
-</p>
-
 <%= link_to 'Edit', edit_goal_path(@goal) %> |
 <%= link_to 'Back', goals_path %>
+
+
+<%= link_to "Add Task", {:action => "new", :controller => "tasks"}, { :method => :get, remote: true }%>
+<div id="new_task_goal"></div>

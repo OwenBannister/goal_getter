@@ -24,7 +24,7 @@ class GoalsController < ApplicationController
     @goal = Goal.new(goal_params)
 
     if @goal.save
-      render :partial => 'goal', :object => @goal, notice: 'Goal was successfully created.'
+      redirect_to :partial => 'goal', :object => @goal, notice: 'Goal was successfully created.'
     else
       render action: 'new'
     end
