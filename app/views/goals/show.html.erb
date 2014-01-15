@@ -25,8 +25,11 @@
 
 
 </div>
-<div class="span7 well" id="new_task_goal">
+<div class="span7 well">
+  <div id="new_task_goal">
 <%= render 'show_tasks' %>
+</div>
 <%= link_to "New Task", {:controller => "tasks", :action => "new", :goal_id => @goal.id}, {:method => "get", :remote => true, :class => 'btn btn-primary'}%>
+
 </div>
 
