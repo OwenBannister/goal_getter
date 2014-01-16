@@ -2,13 +2,12 @@
   <% @tasks.each do |t|%>
   <div class="well task-div">
     <p><span class="label label-danger"><%= t.current_state.name.to_s.humanize %></p>
-  <p><strong><%="Name: #{t.name} "%></strong><br /><span><%= "Description: #{t.description}"%></span></p>
-  	<% t.in_progress?%>
-  	 <%= link_to "Start", start_task_path(:id => t.id), :remote => true , :class => 'btn btn-success' if t.todo?%>
-    	<%= link_to "Complete", complete_task_path(:id => t.id), :remote => true , :class => 'btn btn-success' if t.in_progress? %>
-    	<%= link_to "View Task", task_path(t), :remote => true , :class => 'btn btn-success'%>
-</div>
+    <p><strong><%="Name: #{t.name} "%></strong><br /><span><%= "Description: #{t.description}"%></span></p>
+    <% t.in_progress?%>
+    <%= link_to "Start", start_task_path(:id => t.id), :remote => true , :class => 'btn btn-success' if t.todo?%>
+    <%= link_to "Complete", complete_task_path(:id => t.id), :remote => true , :class => 'btn btn-success' if t.in_progress? %>
+    <%= link_to "View Task", task_path(t), :remote => true , :class => 'btn btn-success'%>
+  </div>
 
   <% end %>
 
-  <%= link_to "New Task", {:controller => "tasks", :action => "new", :goal_id => @goal.id}, {:method => "get", :remote => true, :class => 'btn btn-primary'}%>
