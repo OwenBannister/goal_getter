@@ -8,7 +8,15 @@ class GoalsController < ApplicationController
 
   # GET /goals/1
   def show
-    @tasks = @goal.tasks
+    @tasks = @goal.get_open_tasks
+  end
+
+  def show_tasks
+    set_goal
+    @tasks = @goal.get_open_tasks
+        respond_to do |format|               
+      format.js
+    end      
   end
 
   # GET /goals/new
@@ -54,6 +62,6 @@ class GoalsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def goal_params
-      params.require(:goal).permit(:name, :description, :task_id)
+      params.require(:goal).permit(:name, :description, :task_id, :workflow_state)
     end
 end

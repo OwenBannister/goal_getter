@@ -2,9 +2,17 @@ GoalGetter::Application.routes.draw do
     root :to => 'application#dashboard'
 
   resources :tasks
-
+ get 'complete_task', to: 'tasks#complete'
+ get 'start_task', to: 'tasks#start'
   resources :goals
+  get 'show_tasks', to: 'goals#show_tasks'
+
   resources :applications
+
+
+  
+
+ 
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

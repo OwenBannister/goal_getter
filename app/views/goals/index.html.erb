@@ -5,7 +5,7 @@
 <table class="table table-striped">
   <thead>
     <tr >
-      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th>State</th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
@@ -15,7 +15,7 @@
   <tbody>
     <% @goals.each do |goal| %>
       <tr data-link="<%= goal_path(goal)%>">
-        <td><%= link_to goal.id, goal_path(goal) %></td>
+        <td><span class="label label-primary"><%= goal.current_state.name.to_s.humanize %></span></td>
         <td><%= goal.name %></td>
         <td><%= goal.description %></td>
         <td><%=l goal.created_at %></td>

@@ -8,7 +8,11 @@ class TasksController < ApplicationController
 
   # GET /tasks/1
   def show
+   respond_to do |format|               
+      format.js
+    end      
   end
+
 
   # GET /tasks/new
   def new
@@ -21,6 +25,9 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
+        respond_to do |format|               
+      format.js
+    end      
   end
 
   # POST /tasks
@@ -28,7 +35,7 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.save!
      @goal = Goal.find_by_id @task.goal_id
-    @tasks = @goal.tasks
+    @tasks = @goal.get_open_tasks
  respond_to do |format|
     format.js do
     end
@@ -47,12 +54,39 @@ class TasksController < ApplicationController
   # DELETE /tasks/1
   def destroy
     @task.destroy
-    redirect_to tasks_url, notice: 'Task was successfully destroyed.'
+    redirect_to goal_path(@task.goal_id), notice: 'Task was successfully destroyed.'
   end
+
+def archive
+
+end
+
+  def complete
+    set_task
+    @task.complete!
+    @goal = Goal.find_by_id @task.goal_id
+      @tasks = @goal.get_open_tasks
+ respond_to do |format|
+    format.js do
+    end
+  end
+  end
+
+  def start
+    set_task
+    @task.start!
+    @goal = Goal.find_by_id @task.goal_id
+      @tasks = @goal.get_open_tasks
+ respond_to do |format|
+    format.js do
+    end
+  end
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
+      puts params
       @task = Task.find(params[:id])
     end
 

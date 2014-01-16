@@ -5,6 +5,7 @@
 <table class="table table-striped">
   <thead>
     <tr  >
+      <th>State</th>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
@@ -19,6 +20,7 @@
   <tbody>
     <% @tasks.each do |task| %>
       <tr>
+        <td><span class="label label-primary"><%= task.current_state.name.to_s %></span></td>
         <td><%= link_to task.id, task_path(task) %></td>
         <td><%= task.name %></td>
         <td><%= task.description %></td>
