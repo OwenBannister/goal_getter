@@ -28,6 +28,7 @@ gem 'twitter-bootstrap-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'pry'
 gem 'workflow'
+ gem 'awesome_print'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
