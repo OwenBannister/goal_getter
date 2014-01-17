@@ -62,7 +62,6 @@ end
   end
 
   def complete
-    set_task
     @task.complete!
     @goal = Goal.find_by_id @task.goal_id
     @tasks = @goal.get_open_tasks
@@ -73,7 +72,6 @@ end
   end
 
   def start
-    set_task
     @task.start!
     @goal = Goal.find_by_id @task.goal_id
     @tasks = @goal.get_open_tasks

@@ -9,7 +9,13 @@
     <dd><%= @goal.name %></dd>
     <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
     <dd><%= @goal.description %></dd>
+
   </dl>
+<div class="form-actions">
+    <%= link_to t('.edit', :default => t("helpers.links.edit")),
+    edit_goal_path(@goal), :class => 'btn' %>
+</div>
+
   <div class="form-actions">
     <%= link_to t('.back', :default => t("helpers.links.back")),
     goals_path, :class => 'btn'  %>

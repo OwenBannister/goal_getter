@@ -53,6 +53,21 @@ class GoalsController < ApplicationController
     @goal.destroy
     redirect_to goals_url, notice: 'Goal was successfully destroyed.'
   end
+ 
+
+  def start
+    @goal.start!
+    @tasks = @goal.get_open_tasks
+    respond_to do |format|
+    redirect_to goal_url(@goal), notice: 'Goal was successfully started.'
+  end
+
+  def complete
+    @goal.complete!
+    @tasks = @goal.get_open_tasks
+    redirect_to goals_url, notice: 'Goal was successfully completed.'
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
