@@ -2,12 +2,12 @@ GoalGetter::Application.routes.draw do
     root :to => 'application#dashboard'
 
   resources :tasks
- put 'complete_task', to: 'tasks#complete'
- put 'start_task', to: 'tasks#start'
+ post 'complete_task', to: 'tasks#complete'
+ post 'start_task', to: 'tasks#start'
   resources :goals
   get 'show_tasks', to: 'goals#show_tasks'
- put 'complete_goal', to: 'goals#complete'
- put 'start_goal', to: 'goals#start'
+ post 'complete_goal', to: 'goals#complete'
+ post 'start_goal', to: 'goals#start'
   resources :applications
 
 

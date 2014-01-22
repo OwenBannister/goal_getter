@@ -11,14 +11,13 @@
     <dd><%= @goal.description %></dd>
 
   </dl>
-<div class="form-actions">
-  <% if @goal.workflow_state == "future"%>
-
-  <%else%>
-    <%= link_to "Complete Goal",
-    complete_goal_path(@goal), :class => 'btn' %>
+  <div class="form-actions">
+    <% if @goal.workflow_state == "future"%>
+    <%= link_to "Start Goal", {controller: "goals", action: "start", :id => @goal.id}, {method: "post" , :class => 'btn' }%>
+    <%elsif (@goal.workflow_state == "future" || @goal.workflow_state != "completed") && @tasks.size == 0%>
+    <%= link_to "Complete Goal", {controller: "goals", action: "complete", :id => @goal.id}, {method: "post" , :class => 'btn' } %>
     <%end%>
-</div>
+  </div>
 
   <div class="form-actions">
     <%= link_to t('.back', :default => t("helpers.links.back")),
@@ -42,18 +41,18 @@
     <%= link_to "New Task", {:controller => "tasks", :action => "new", :goal_id => @goal.id}, {:method => "get", :remote => true, :class => 'btn btn-primary'}%>
   </div>
 
-<div class="well" id="complete_task_goal">
-  <h3>Completed Tasks</h3>
-  <% @goal.get_completed_tasks.each do |t|%>
-  <div class="well task-div">
-    <p><span class="label label-success"><%= t.current_state.name.to_s.humanize %></p>
-    <p><strong><%="Name: #{t.name} "%></strong><br /><span><%= "Description: #{t.description}"%></span></p>
+  <div class="well" id="complete_task_goal">
+    <h3>Completed Tasks</h3>
+    <% @goal.get_completed_tasks.each do |t|%>
+    <div class="well task-div">
+      <p><span class="label label-success"><%= t.current_state.name.to_s.humanize %></p>
+      <p><strong><%="Name: #{t.name} "%></strong><br /><span><%= "Description: #{t.description}"%></span></p>
 
-    <%= link_to "Complete", complete_task_path(:id => t.id), :remote => true , :class => 'btn btn-success' if t.in_progress?%>
+      <%= link_to "Complete", complete_task_path(:id => t.id), :remote => true , :class => 'btn btn-success' if t.in_progress?%>
 
-    <%= link_to "View Task", task_path(t), :remote => true , :class => 'btn btn-success'%>
+      <%= link_to "View Task", task_path(t), :remote => true , :class => 'btn btn-success'%>
+    </div>
+    <%end%>
   </div>
-  <%end%>
-</div>
 </div>
 

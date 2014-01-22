@@ -1,5 +1,5 @@
 class GoalsController < ApplicationController
-  before_action :set_goal, only: [:show, :edit, :update, :destroy]
+  before_action :set_goal, only: [:show, :edit, :update, :destroy, :start, :complete]
 
   # GET /goals
   def index
@@ -58,7 +58,6 @@ class GoalsController < ApplicationController
   def start
     @goal.start!
     @tasks = @goal.get_open_tasks
-    respond_to do |format|
     redirect_to goal_url(@goal), notice: 'Goal was successfully started.'
   end
 
@@ -66,7 +65,6 @@ class GoalsController < ApplicationController
     @goal.complete!
     @tasks = @goal.get_open_tasks
     redirect_to goals_url, notice: 'Goal was successfully completed.'
-    end
   end
 
   private

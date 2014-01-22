@@ -29,6 +29,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'pry'
 gem 'workflow'
  gem 'awesome_print'
+ gem 'carrierwave'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

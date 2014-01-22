@@ -3,9 +3,8 @@
   <div class="well task-div">
     <p><span class="label label-danger"><%= t.current_state.name.to_s.humanize %></p>
     <p><strong><%="Name: #{t.name} "%></strong><br /><span><%= "Description: #{t.description}"%></span></p>
-    <% t.in_progress?%>
-    <%= link_to "Start", start_task_path(:id => t.id), :remote => true , :class => 'btn btn-success' if t.todo?%>
-    <%= link_to "Complete", complete_task_path(:id => t.id), :remote => true , :class => 'btn btn-success' if t.in_progress? %>
+    <%= link_to "Start", {controller: "tasks", action: "start", :id => t.id}, {method: "post" , :class => 'btn btn-success' , remote: true } if t.todo?%>
+    <%= link_to "Complete", {controller: "tasks", action: "complete", :id => t.id}, {method: "post", class: 'btn btn-success', remote: true } if t.in_progress? %>
     <%= link_to "View Task", task_path(t), :remote => true , :class => 'btn btn-success'%>
   </div>
 
